@@ -14,7 +14,7 @@ def banco():
     CREATE TABLE IF NOT EXISTS personagens(
     Nome TEXT NOT NULL,
     Raca TEXT NOT NULL,
-    Classe TEXT NOT NULL,
+    Classe TEXT NOT NULL
     );
     """)
 
@@ -43,9 +43,7 @@ def atualizar_u(novo_nome, nome):
 
     conn = sqlite3.connect("DeD.db")
     cursor = conn.cursor()
-    cursor.execute("""UPDATE usuarios
-     SET Nome = ?, 
-      WHERE Nome = ?""", (novo_nome, nome,))
+    cursor.execute("""UPDATE usuarios SET Nome = ? WHERE Nome = ?""", (novo_nome, nome,))
     messagebox.showinfo('Atualizar', 'Dados do usuario atualizados com sucesso')
     conn.commit()
     conn.close()
@@ -72,7 +70,7 @@ def cadastrar_p(nome, raca, classe):
     messagebox.showinfo("Cadastro", "Personagem Cadastrado com sucesso")
     conn.close()
 
-def consultar_p(nome):
+def consultar_p(nome,pesquisa):
     pesquisa.delete(0)
     conn = sqlite3.connect("DeD.db")
     cursor = conn.cursor()
