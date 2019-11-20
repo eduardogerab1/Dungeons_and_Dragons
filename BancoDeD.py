@@ -99,3 +99,5 @@ def apagar_p(nome):
     messagebox.showinfo('Deletar', 'Personagem deletado com sucesso')
     conn.commit()
     conn.close()
+
+    
