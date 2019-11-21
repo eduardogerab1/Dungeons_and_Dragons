@@ -4,7 +4,7 @@ import listboxDeD
 import BancoDeD
 
 menu = Tk()
-menu.geometry("750x575")
+menu.geometry("750x575+50+50")
 menu.title("Menu da criação de ficha")
 BancoDeD.banco()
 

@@ -36,7 +36,7 @@ def buscar_personagem():
     tree.column('#3', stretch=NO, minwidth=0, width=95)
     tree.pack()
 
-    confirmar = Button(personagem, width=10, text="Pesquisar")
+    confirmar = Button(personagem, width=20, text="Abrir Ficha")
     confirmar.place(x=135 ,y=40)
     
     voltar = Button(personagem, width=30, text="Voltar para o Menu", command=personagem.destroy)
@@ -45,7 +45,7 @@ def buscar_personagem():
     def criar_personagem():
 
         dados = Tk()
-        dados.geometry("900x240")
+        dados.geometry("1250x648")
         dados.title("Criando um Personagem")
 
         nome = Label(dados, text="Digite o nome do seu personagem: ")
@@ -53,34 +53,58 @@ def buscar_personagem():
         
         raca = Label(dados, text="Escolha a raça do seu personagem: ")
         raca.place(x=0, y=25)
+
+        subraca = Label(dados, text="Escolha a sub-raça do seu personagem: ")
+        subraca.place(x=0, y=50)
         
         classe = Label(dados, text="Escolha a classe do seu personagem: ")
-        classe.place(x=0, y=50)
+        classe.place(x=0, y=75)
+
+        subclasse = Label(dados, text="Escolha a sub-classe do seu personagem: ")
+        subclasse.place(x=0, y=100)
 
         nome_personagem = Entry(dados, width=40)
         nome_personagem.place(x=197, y=0)
 
-        racas = ['Anão', 'Elfo', 'Halfling', 'Humano', 'Draconato', 'Gnomo', 'Orc', 'Meio-Elfo', 'Meio-Orc',
-                 'Tiefling', 'Goblin', 'Minotauro', 'Aarakocra', 'Tartaruga', 'Gênio', 'Golias', 'Aasimar', 'Shifter',
-                 'Shapeshifter', 'Bugbear', 'Firbolg', 'Hobgoblin', 'Kenku', 'Kobold', 'Lagartixa', 'Tritão', 'Tabaxi'
-                 'Yuan-Ti', 'Changeling', 'Kalashtar', 'Warforged', 'Gith', 'Centauro', 'Loxodon', 'Simic Hybrid'
+        racas = ['Selecione sua Raça','Anão', 'Elfo', 'Halfling', 'Humano', 'Draconato', 'Gnomo', 'Orc', 'Meio-Elfo',
+                 'Meio-Orc','Tiefling', 'Goblin', 'Minotauro', 'Aarakocra', 'Tartaruga', 'Gênio', 'Golias', 'Aasimar',
+                 'Shifter','Shapeshifter', 'Bugbear', 'Firbolg', 'Hobgoblin', 'Kenku', 'Kobold', 'Lagartixa', 'Tritão',
+                 'Tabaxi''Yuan-Ti', 'Changeling', 'Kalashtar', 'Warforged', 'Gith', 'Centauro', 'Loxodon', 'Simic Hybrid',
                  'Vedalken', 'Locathah']
 
         raca_personagem = ttk.Combobox(dados, values=racas)
+        raca_personagem.set('Selecione sua Raça')
         raca_personagem.place(x=196, y=25)
 
-        classes = ['Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida', 'Feiticeiro',
-                   'Guerreiro', 'Ladino', 'Mago', 'Monge', 'Paladino', 'Patrulheiro']
+        subracas = ['Selecione sua Sub-Raça', '', '', '', '' , '', '', '', '', '', '', '', '', '', '',
+                    '', '' ,'' , '', '', '', '', '', '', '', '', '', '', '', '',
+                    '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',]
+
+        subraca_personagem = ttk.Combobox(dados, values=subracas)
+        subraca_personagem.set('Selecione sua Sub-Raça')
+        subraca_personagem.place(x=217 , y=50)
+
+        classes = ['Selecione sua Classe','Bárbaro', 'Bardo', 'Bruxo', 'Clérigo', 'Druida',
+                   'Feiticeiro','Guerreiro', 'Ladino', 'Mago', 'Monge', 'Paladino', 'Patrulheiro']
         
         classe_personagem = ttk.Combobox(dados, values=classes)
-        classe_personagem.place(x=197, y=50)
+        classe_personagem.set('Selecione sua Classe')
+        classe_personagem.place(x=200, y=75)
+
+        subclasses = ['Selecione sua Sub-Classe', '', '', '', '' , '', '', '', '', '', '', '', '', '', '',
+                      '', '' ,'' , '', '', '', '', '', '', '', '', '', '', '', '',
+                      '', '', '', '', '', '', '', '', '', '', '', '', '', '', '',]
+
+        subclasse_personagem = ttk.Combobox(dados, values=subclasses)
+        subclasse_personagem.set('Selecione sua Sub-Classe')
+        subclasse_personagem.place(x=220 ,y=100)
         
         def pegandod():
-            nome1, raca1, classe1 = nome_personagem.get(), raca_personagem.get(), classe_personagem.get()
+            nome1, raca1, subraca1, classe1 = nome_personagem.get(), raca_personagem.get(), classe_personagem.get()
             BancoDeD.cadastrar_p(nome1, raca1, classe1)
             
         criar = Button(dados,width=10, text="Criar", command=pegandod)
-        criar.place(x= 150, y=200)
+        criar.place(x=260, y=135)
         
         voltar = Button(dados,width=10, text="Voltar", command=dados.destroy)
         voltar.pack(side=BOTTOM)
